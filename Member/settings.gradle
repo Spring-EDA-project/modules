@@ -1,0 +1,8 @@
+rootProject.name = 'Member'
+include 'module-core'
+include 'module-internal-api'
+include 'module-external-api'
+include 'module-event-consumer'
+include 'module-event-producer'
+include 'module-common'
+
