@@ -6,3 +6,8 @@ include 'module-event-consumer'
 include 'module-event-producer'
 include 'module-common'
 
+include 'module-core:member-domain-core'
+findProject(':module-core:member-domain-core')?.name = 'member-domain-core'
+include 'module-core:member-rdbms-core'
+findProject(':module-core:member-rdbms-core')?.name = 'member-rdbms-core'
+
