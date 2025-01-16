@@ -1,10 +1,10 @@
-package org.external;
+package org.external.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.common.response.SuccessResponse;
 import org.external.application.port.in.SignUpUseCase;
-import org.external.application.port.in.dto.req.SignUpReqDto;
-import org.external.application.port.in.dto.res.SignUpResDto;
+import org.external.presentation.dto.req.SignUpReqDto;
+import org.external.presentation.dto.res.SignUpResDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +19,7 @@ public class MemberApiController {
 
     @PostMapping("/signup")
     public ResponseEntity<SuccessResponse<?>> signup(@RequestBody final SignUpReqDto signUpReqDto) {
-        final SignUpResDto resDto = signUpUseCase.signUp(signUpReqDto);
+        final SignUpResDto resDto = SignUpResDto.of(signUpUseCase.signUp(signUpReqDto.toMember()));
         return SuccessResponse.ok(resDto);
     }
 }

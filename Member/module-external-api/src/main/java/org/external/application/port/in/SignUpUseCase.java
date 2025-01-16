@@ -1,8 +1,7 @@
 package org.external.application.port.in;
 
-import org.external.application.port.in.dto.req.SignUpReqDto;
-import org.external.application.port.in.dto.res.SignUpResDto;
+import org.domain.Member;
 
 public interface SignUpUseCase {
-    SignUpResDto signUp(SignUpReqDto signUpReqDto);
+    Member signUp(Member member);
 }

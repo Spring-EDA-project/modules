@@ -32,8 +32,8 @@ subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
     }
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//        implementation 'org.springframework.boot:spring-boot-starter'
+//        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
         // lombok
         compileOnly 'org.projectlombok:lombok'

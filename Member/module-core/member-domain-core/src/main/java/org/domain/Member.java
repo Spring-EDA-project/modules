@@ -1,4 +1,4 @@
-package org.domain.domain;
+package org.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -10,4 +10,5 @@ public class Member {
     private String email;
     private String password;
     private String name;
+
 }
