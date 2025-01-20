@@ -1,4 +1,4 @@
-package org.rdbms.impl;
+package org.rdbms.repository.ports.in;
 
 import org.rdbms.entity.MemberEntity;
 

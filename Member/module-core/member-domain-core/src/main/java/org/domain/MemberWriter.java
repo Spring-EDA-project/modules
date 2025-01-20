@@ -1,7 +1,7 @@
 package org.domain;
 
 import org.rdbms.entity.MemberEntity;
-import org.rdbms.impl.MemberRepository;
+import org.rdbms.repository.ports.in.MemberRepository;
 
 public class MemberWriter {
     private final MemberRepository memberRepository;
@@ -12,7 +12,7 @@ public class MemberWriter {
         this.memberMapper = memberMapper;
     }
 
-    public Member writer(Member member) {
+    public Member write(Member member) {
         MemberEntity memberEntity = memberMapper.toEntity(member);
         MemberEntity savedMemberEntity = memberRepository.save(memberEntity);
         return memberMapper.toDomain(savedMemberEntity);

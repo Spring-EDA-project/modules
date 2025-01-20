@@ -1,4 +1,4 @@
-package org.rdbms.repository;
+package org.rdbms.repository.ports.out;
 
 import org.rdbms.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
