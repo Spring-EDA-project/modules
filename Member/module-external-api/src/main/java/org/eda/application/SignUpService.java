@@ -1,10 +1,10 @@
-package org.external.application;
+package org.eda.application;
 
 import lombok.RequiredArgsConstructor;
 import org.domain.Member;
 import org.domain.MemberValidator;
 import org.domain.MemberWriter;
-import org.external.application.port.in.SignUpUseCase;
+import org.eda.application.port.in.SignUpUseCase;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor

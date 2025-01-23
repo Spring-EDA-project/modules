@@ -1,4 +1,4 @@
-package org.rdbms.entity;
+package org.eda.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

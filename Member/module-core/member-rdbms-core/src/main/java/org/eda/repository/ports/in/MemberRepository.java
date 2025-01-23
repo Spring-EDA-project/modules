@@ -1,6 +1,6 @@
-package org.rdbms.repository.ports.in;
+package org.eda.repository.ports.in;
 
-import org.rdbms.entity.MemberEntity;
+import org.eda.entity.MemberEntity;
 
 public interface MemberRepository {
     MemberEntity save(MemberEntity memberEntity);

@@ -1,4 +1,4 @@
-package org.rdbms.config;
+package org.eda.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

@@ -1,6 +1,6 @@
 package org.domain;
 
-import org.rdbms.entity.MemberEntity;
+import org.eda.entity.MemberEntity;
 
 public class MemberMapper {
 
@@ -8,7 +8,7 @@ public class MemberMapper {
         return MemberEntity.builder()
                 .email(member.getEmail())
                 .name(member.getName())
-                .password(member.getName())
+                .password(member.getPassword())
                 .build();
     }
 

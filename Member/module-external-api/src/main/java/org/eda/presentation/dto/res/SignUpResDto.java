@@ -1,4 +1,4 @@
-package org.external.presentation.dto.res;
+package org.eda.presentation.dto.res;
 
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package org.external.presentation.dto.req;
+package org.eda.presentation.dto.req;
 
 import org.domain.Member;
 

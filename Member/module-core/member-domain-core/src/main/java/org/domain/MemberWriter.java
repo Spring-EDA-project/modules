@@ -1,7 +1,7 @@
 package org.domain;
 
-import org.rdbms.entity.MemberEntity;
-import org.rdbms.repository.ports.in.MemberRepository;
+import org.eda.entity.MemberEntity;
+import org.eda.repository.ports.in.MemberRepository;
 
 public class MemberWriter {
     private final MemberRepository memberRepository;

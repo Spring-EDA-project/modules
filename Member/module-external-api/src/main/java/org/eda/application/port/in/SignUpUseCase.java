@@ -1,4 +1,4 @@
-package org.external.application.port.in;
+package org.eda.application.port.in;
 
 import org.domain.Member;
 

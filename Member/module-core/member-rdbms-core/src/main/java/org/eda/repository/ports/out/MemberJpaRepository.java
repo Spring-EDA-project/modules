@@ -1,6 +1,6 @@
-package org.rdbms.repository.ports.out;
+package org.eda.repository.ports.out;
 
-import org.rdbms.entity.MemberEntity;
+import org.eda.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberJpaRepository extends JpaRepository<MemberEntity, Long> {

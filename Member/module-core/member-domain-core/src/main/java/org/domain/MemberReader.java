@@ -1,6 +1,6 @@
 package org.domain;
 
-import org.rdbms.repository.ports.in.MemberRepository;
+import org.eda.repository.ports.in.MemberRepository;
 
 public class MemberReader {
     private final MemberRepository memberRepository;

@@ -1,9 +1,9 @@
-package org.rdbms.repository;
+package org.eda.repository;
 
 import lombok.RequiredArgsConstructor;
-import org.rdbms.entity.MemberEntity;
-import org.rdbms.repository.ports.in.MemberRepository;
-import org.rdbms.repository.ports.out.MemberJpaRepository;
+import org.eda.entity.MemberEntity;
+import org.eda.repository.ports.in.MemberRepository;
+import org.eda.repository.ports.out.MemberJpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

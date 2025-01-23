@@ -1,4 +1,4 @@
-package org.external;
+package org.eda;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

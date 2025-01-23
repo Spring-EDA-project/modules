@@ -1,10 +1,10 @@
-package org.external.presentation;
+package org.eda.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.common.response.SuccessResponse;
-import org.external.application.port.in.SignUpUseCase;
-import org.external.presentation.dto.req.SignUpReqDto;
-import org.external.presentation.dto.res.SignUpResDto;
+import org.eda.application.port.in.SignUpUseCase;
+import org.eda.presentation.dto.req.SignUpReqDto;
+import org.eda.presentation.dto.res.SignUpResDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
