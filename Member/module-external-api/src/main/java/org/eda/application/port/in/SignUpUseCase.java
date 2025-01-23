@@ -1,6 +1,6 @@
 package org.eda.application.port.in;
 
-import org.domain.Member;
+import org.eda.Member;
 
 public interface SignUpUseCase {
     Member signUp(Member member);

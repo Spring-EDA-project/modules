@@ -1,4 +1,4 @@
-package org.domain;
+package org.eda;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package org.common;
+package org.eda;
 
 public class Main {
     public static void main(String[] args) {

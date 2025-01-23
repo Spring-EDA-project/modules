@@ -1,6 +1,6 @@
 package org.eda.presentation.dto.req;
 
-import org.domain.Member;
+import org.eda.Member;
 
 public record SignUpReqDto(
         String email,

@@ -1,4 +1,4 @@
-package org.domain;
+package org.eda;
 
 public class MemberValidator {
 

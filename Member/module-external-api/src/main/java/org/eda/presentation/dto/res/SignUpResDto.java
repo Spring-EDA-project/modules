@@ -2,7 +2,7 @@ package org.eda.presentation.dto.res;
 
 import lombok.AccessLevel;
 import lombok.Builder;
-import org.domain.Member;
+import org.eda.Member;
 
 @Builder(access = AccessLevel.PRIVATE)
 public record SignUpResDto(

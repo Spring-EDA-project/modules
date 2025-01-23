@@ -1,4 +1,4 @@
-package org.domain;
+package org.eda;
 
 import org.eda.repository.ports.in.MemberRepository;
 

@@ -1,7 +1,7 @@
 package org.eda.presentation;
 
 import lombok.RequiredArgsConstructor;
-import org.common.response.SuccessResponse;
+import org.eda.response.SuccessResponse;
 import org.eda.application.port.in.SignUpUseCase;
 import org.eda.presentation.dto.req.SignUpReqDto;
 import org.eda.presentation.dto.res.SignUpResDto;

@@ -1,4 +1,4 @@
-package org.common.response;
+package org.eda.response;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

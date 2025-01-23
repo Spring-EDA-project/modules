@@ -1,9 +1,9 @@
 package org.eda.config;
 
 import lombok.RequiredArgsConstructor;
-import org.domain.MemberMapper;
-import org.domain.MemberValidator;
-import org.domain.MemberWriter;
+import org.eda.MemberMapper;
+import org.eda.MemberValidator;
+import org.eda.MemberWriter;
 import org.eda.repository.MemberRepositoryImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

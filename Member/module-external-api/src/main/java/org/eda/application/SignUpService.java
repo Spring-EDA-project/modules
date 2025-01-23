@@ -1,9 +1,9 @@
 package org.eda.application;
 
 import lombok.RequiredArgsConstructor;
-import org.domain.Member;
-import org.domain.MemberValidator;
-import org.domain.MemberWriter;
+import org.eda.Member;
+import org.eda.MemberValidator;
+import org.eda.MemberWriter;
 import org.eda.application.port.in.SignUpUseCase;
 import org.springframework.stereotype.Service;
 
