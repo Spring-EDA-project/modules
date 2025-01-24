@@ -1,14 +1,3 @@
-plugins {
-    id 'java'
-}
-
-group = 'org.external'
-version = 'unspecified'
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':module-common')
     implementation project(':module-core:member-rdbms-core')
