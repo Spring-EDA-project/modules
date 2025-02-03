@@ -9,7 +9,7 @@ bootJar.enabled = false
 jar.enabled = false
 
 allprojects {
-    group = 'com.example'
+    group = 'com.eda'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '17'
 
