@@ -6,17 +6,27 @@ public class MemberMapper {
 
     public MemberEntity toEntity(Member member) {
         return MemberEntity.builder()
-                .email(member.getEmail())
-                .name(member.getName())
-                .password(member.getPassword())
-                .build();
+            .id(member.getId())
+            .gender(member.getGender())
+            .name(member.getName())
+            .email(member.getEmail())
+            .password(member.getPassword())
+            .age(member.getAge())
+            .createdAt(member.getCreatedAt())
+            .lastModifiedAt(member.getLastModifiedAt())
+            .build();
     }
 
     public Member toDomain(MemberEntity entity) {
         return Member.builder()
-                .id(entity.getId())
-                .email(entity.getEmail())
-                .password(entity.getPassword())
-                .build();
+            .id(entity.getId())
+            .gender(entity.getGender())
+            .name(entity.getName())
+            .email(entity.getEmail())
+            .password(entity.getPassword())
+            .age(entity.getAge())
+            .createdAt(entity.getCreatedAt())
+            .lastModifiedAt(entity.getLastModifiedAt())
+            .build();
     }
 }
