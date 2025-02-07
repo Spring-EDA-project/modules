@@ -1,5 +1,8 @@
 package com.eda.external.presentation;
 
+import com.eda.external.application.port.in.LoginUseCase;
+import com.eda.external.presentation.dto.req.LoginReqDto;
+import com.eda.external.presentation.dto.res.LoginResDto;
 import lombok.RequiredArgsConstructor;
 import com.eda.common.response.SuccessResponse;
 import com.eda.external.application.port.in.SignUpUseCase;
@@ -16,10 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberApiController {
     private final SignUpUseCase signUpUseCase;
+    private final LoginUseCase loginUseCase;
 
     @PostMapping("/signup")
     public ResponseEntity<SuccessResponse<?>> signup(@RequestBody final SignUpReqDto signUpReqDto) {
         final SignUpResDto resDto = SignUpResDto.of(signUpUseCase.signUp(signUpReqDto.toMember()));
+        return SuccessResponse.ok(resDto);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<SuccessResponse<?>> login(@RequestBody final LoginReqDto loginReqDto){
+        final LoginResDto resDto = LoginResDto.of(loginUseCase.login(loginReqDto.toMember()));
         return SuccessResponse.ok(resDto);
     }
 }

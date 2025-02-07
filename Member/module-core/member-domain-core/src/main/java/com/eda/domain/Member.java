@@ -10,4 +10,8 @@ public class Member {
     private String email;
     private String password;
     private String name;
+
+    public boolean isPasswordMatch(String password) {
+        return this.password.equals(password);
+    }
 }

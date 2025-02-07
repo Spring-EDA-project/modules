@@ -1,5 +1,6 @@
 package com.eda.external.config;
 
+import com.eda.domain.MemberReader;
 import lombok.RequiredArgsConstructor;
 import com.eda.domain.MemberMapper;
 import com.eda.domain.MemberValidator;
@@ -29,4 +30,12 @@ public class MemberConfig {
         MemberMapper memberMapper = new MemberMapper();
         return new MemberWriter(memberRepositoryImpl, memberMapper);
     }
+
+    @Bean
+    public MemberReader memberReader() {
+        MemberMapper memberMapper = new MemberMapper();
+        return new MemberReader(memberRepositoryImpl, memberMapper);
+    }
 }
+
+//회원가입 로그인 테스트
