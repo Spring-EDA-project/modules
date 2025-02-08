@@ -1,4 +1,5 @@
 rootProject.name = 'order'
+include 'module-common'
 include 'module-external-api'
 include 'module-core'
 include 'module-core:order-domain-core'
