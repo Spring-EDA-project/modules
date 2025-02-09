@@ -23,13 +23,10 @@ allprojects {
 }
 
 subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
-
     apply plugin: 'org.jetbrains.kotlin.jvm'
     apply plugin: 'org.jetbrains.kotlin.plugin.spring'
     apply plugin: 'org.jetbrains.kotlin.kapt'
 
-    apply plugin: 'java'
-    apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
@@ -40,7 +37,7 @@ subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
     }
 
     dependencies {
-        // 코틀린의 표준 라이브러리를 jdk 17버전으로 가져움
+        // 코틀린의 표준 라이브러리를 가져움
         implementation 'org.jetbrains.kotlin:kotlin-stdlib'
         // 코틀린 json 파서
         implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
