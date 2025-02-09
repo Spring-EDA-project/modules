@@ -11,6 +11,6 @@ class PaymentService(
 ): PaymentUseCase {
 
     override fun pay(payment: Payment): Payment {
-        return paymentWriter.store(payment);
+        return paymentWriter.write(payment);
     }
 }

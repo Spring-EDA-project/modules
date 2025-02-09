@@ -7,7 +7,7 @@ class PaymentWriter(
     private val paymentMapper: PaymentMapper,
     private val paymentRepository: PaymentRepository
 ) {
-    fun store(payment: Payment): Payment {
+    fun write(payment: Payment): Payment {
         val paymentEntity = paymentMapper.toEntity(payment)
         val savedPaymentEntity = paymentRepository.save(paymentEntity)
         return paymentMapper.toDomain(savedPaymentEntity)
