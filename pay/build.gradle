@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.7'
+    id 'io.spring.dependency-management' version '1.1.7'
+
+    id 'org.jetbrains.kotlin.jvm' version '1.9.23'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.9.23'
+    id 'org.jetbrains.kotlin.kapt' version '1.9.23'
+}
+
+// 빌드시 현재 모듈(multi-module)의 .jar를 생성하지 않습니다.
+bootJar.enabled = false
+jar.enabled = false
+
+allprojects {
+    group = 'com.eda'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '17'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
+
+    apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+    apply plugin: 'org.jetbrains.kotlin.kapt'
+
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    dependencies {
+        // 코틀린의 표준 라이브러리를 jdk 17버전으로 가져움
+        implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+        // 코틀린 json 파서
+        implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+        implementation 'org.jetbrains.kotlin:kotlin-reflect'
+
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+    // 코틀린 컴파일 옵션
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+
+    // 테스트 코드 컴파일 옵션
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+rootProject.name = 'pay'
+include 'module-core'
+include 'module-core:domain-core'
+findProject(':module-core:domain-core')?.name = 'domain-core'
+include 'module-core:rdbms-core'
+findProject(':module-core:rdbms-core')?.name = 'rdbms-core'
+include 'module-external-api'
+
