@@ -1,5 +1,7 @@
 package com.eda.external.application.in;
 
-public interface RequestDeliveryUseCase {
+import com.eda.domain.Delivery;
 
+public interface RequestDeliveryUseCase {
+    Delivery requestDelivery(Delivery delivery);
 }

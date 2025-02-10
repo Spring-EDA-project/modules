@@ -1,16 +1,16 @@
 package com.eda.external.application;
 
 import com.eda.domain.Delivery;
-import com.eda.external.application.in.RequestDeliveryUseCase;
+import com.eda.external.application.in.UpdateDeliveryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class RequestDeliveryService implements RequestDeliveryUseCase {
+public class UpdateDeliveryService implements UpdateDeliveryUseCase {
 
     @Override
-    public Delivery requestDelivery(Delivery delivery) {
+    public Delivery updateDelivery(Delivery delivery) {
         return null;
     }
 }

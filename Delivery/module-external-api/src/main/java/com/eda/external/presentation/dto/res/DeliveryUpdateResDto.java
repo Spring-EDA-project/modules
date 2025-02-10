@@ -5,15 +5,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 
 @Builder(access = AccessLevel.PRIVATE)
-public record RequestDeliveryResDto(
+public record DeliveryUpdateResDto(
     Long delivery_id,
     String destination,
     String invoiceNumber,
     Long memberId,
     Long orderProductId
 ) {
-    public static RequestDeliveryResDto of(Delivery delivery) {
-        return RequestDeliveryResDto.builder()
+    public static DeliveryUpdateResDto of(Delivery delivery) {
+        return DeliveryUpdateResDto.builder()
                 .delivery_id(delivery.getId())
                 .destination(delivery.getDestination())
                 .invoiceNumber(delivery.getInvoiceNumber())
