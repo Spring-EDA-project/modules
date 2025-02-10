@@ -16,6 +16,6 @@ class InternalApiController(
 
     @PostMapping
     fun confirmPayment(@RequestBody paymentRequest: PaymentRequest): PaymentResponse {
-        return PaymentResponse.of(paymentUseCase.confirmPayment(paymentRequest.toPayment()))
+        return PaymentResponse.of(paymentUseCase.confirmPayment(paymentRequest.toPayment(), paymentRequest.toPaymentConfirm()))
     }
 }
