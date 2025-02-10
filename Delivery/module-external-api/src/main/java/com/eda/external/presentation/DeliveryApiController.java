@@ -6,8 +6,11 @@ import com.eda.external.application.in.UpdateDeliveryUseCase;
 import com.eda.external.application.in.RequestDeliveryUseCase;
 import com.eda.external.presentation.dto.req.DeliveryUpdateReqDto;
 import com.eda.external.presentation.dto.req.RequestDeliveryReqDto;
+import com.eda.external.presentation.dto.res.DeliveryListResDto;
+import com.eda.external.presentation.dto.res.DeliveryResDto;
 import com.eda.external.presentation.dto.res.DeliveryUpdateResDto;
 import com.eda.external.presentation.dto.res.RequestDeliveryResDto;
+import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +44,17 @@ public class DeliveryApiController {
 
     @GetMapping("/{deliveryId}")
     public ResponseEntity<SuccessResponse<?>> getDelivery(@RequestParam(name = "deliveryId") final Long deliveryId) {
-//        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
-        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(Delivery.builder()
+//        final DeliveryResDto resDto = DeliveryResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
+        final DeliveryResDto resDto = DeliveryResDto.of(Delivery.builder()
             .id(deliveryId).build());
+        return SuccessResponse.ok(resDto);
+    }
+
+    @GetMapping("/list/{memberId}")
+    public ResponseEntity<SuccessResponse<?>> getAllDelivery(@RequestParam(name = "memberId") final Long memberId) {
+//        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
+        final DeliveryListResDto resDto = DeliveryListResDto.of(Arrays.asList(Delivery.builder()
+            .memberId(memberId).build()));
         return SuccessResponse.ok(resDto);
     }
 
