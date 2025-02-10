@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class MemberRepositoryImpl implements DeliveryRepository {
+public class DeliveryRepositoryImpl implements DeliveryRepository {
     private final DeliveryJpaRepository deliveryJpaRepository;
 
     public DeliveryEntity save(DeliveryEntity deliveryEntity) {
