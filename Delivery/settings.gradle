@@ -1,1 +1,9 @@
 rootProject.name = 'Delivery'
+include("module-external-api")
+include("module-internal-api")
+include("module-core")
+
+include("module-core:delivery-domain-core")
+findProject(":module-core:delivery-domain-core")?.name = "delivery-domain-core"
+include("module-core:delivery-rdbms-core")
+findProject(":module-core:delivery-rdbms-core")?.name = "delivery-rdbms-core"
