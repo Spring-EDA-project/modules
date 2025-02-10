@@ -1,7 +1,8 @@
 package org.eda.application.ports.`in`
 
 import org.eda.domain.Payment
+import org.eda.domain.PaymentConfirm
 
 interface PaymentUseCase {
-    fun pay(payment: Payment): Payment
+    fun confirmPayment(payment: Payment, paymentConfirm: PaymentConfirm): Payment
 }

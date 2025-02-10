@@ -11,7 +11,7 @@ class PaymentEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
-    val id: Long?,
+    val id: Long? = null,
     var amount: Int,
     var paymentYn: Boolean,
     val orderProductId: Long

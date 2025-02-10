@@ -7,6 +7,7 @@ class PaymentMapper {
 
     fun toDomain(paymentEntity: PaymentEntity): Payment {
         return Payment(
+            id = paymentEntity.id,
             amount = paymentEntity.amount,
             paymentYn = paymentEntity.paymentYn,
             orderProductId = paymentEntity.orderProductId
