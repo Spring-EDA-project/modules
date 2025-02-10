@@ -1,0 +1,5 @@
+rootProject.name = 'product'
+include 'module-common'
+include 'module-external-api'
+include 'module-core'
+include 'module-core:product-domain-core'
