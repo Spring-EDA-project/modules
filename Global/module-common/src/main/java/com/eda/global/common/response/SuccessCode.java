@@ -16,7 +16,12 @@ enum SuccessCode {
     /**
      * 201 Created
      */
-    CREATED(HttpStatus.CREATED, "요청이 성공했습니다.");
+    CREATED(HttpStatus.CREATED, "요청이 성공했습니다."),
+
+    /**
+     * 202 Accepted
+     */
+    ACCEPTED(HttpStatus.ACCEPTED, "요청이 승인되었습니다.");
 
     private final HttpStatus httpStatus;
     private final String message;

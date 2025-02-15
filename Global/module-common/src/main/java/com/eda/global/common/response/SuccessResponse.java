@@ -25,6 +25,11 @@ public class SuccessResponse<T> {
                 .body(SuccessResponse.of(SuccessCode.CREATED, data));
     }
 
+    public static <T> ResponseEntity<SuccessResponse<?>> accepted(T data) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED)
+                .body(SuccessResponse.of(SuccessCode.ACCEPTED, data));
+    }
+
     public static <T> SuccessResponse<?> of(SuccessCode successCode, T data) {
         return SuccessResponse.builder()
                 .status(successCode.getHttpStatus().value())
