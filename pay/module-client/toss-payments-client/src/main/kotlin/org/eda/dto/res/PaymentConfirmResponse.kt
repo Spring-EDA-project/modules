@@ -1,6 +1,5 @@
 package org.eda.dto.res
 
-import org.eda.domain.Payment
 import org.eda.domain.PaymentConfirm
 
 data class PaymentConfirmResponse(

@@ -9,4 +9,5 @@ class Payment(
     var paymentYn: Boolean,
     val orderProductId: Long
 ) {
+
 }
