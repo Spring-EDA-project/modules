@@ -1,0 +1,7 @@
+package com.eda.external.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ProductConfig {
+}

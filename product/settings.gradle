@@ -5,3 +5,6 @@ include 'module-internal-api'
 include 'module-core'
 include 'module-core:product-domain-core'
 include 'module-core:product-rdbms-core'
+
+findProject(':module-core:product-domain-core')?.name = 'product-domain-core'
+findProject(':module-core:product-rdbms-core')?.name = 'product-rdbms-core'

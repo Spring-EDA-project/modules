@@ -3,6 +3,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+// 빌드시 현재 모듈(multi-module)의 .jar를 생성하지 않습니다.
+bootJar.enabled = false
+jar.enabled = false
+
 tasks.named('test') {
     useJUnitPlatform()
 }

@@ -1,3 +1,7 @@
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 }
+
+// 빌드시 현재 모듈(multi-module)의 .jar를 생성하지 않습니다.
+bootJar.enabled = false
+jar.enabled = false
