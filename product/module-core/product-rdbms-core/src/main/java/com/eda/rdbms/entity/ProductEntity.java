@@ -19,5 +19,5 @@ public class ProductEntity {
     @Column(name = "name")
     private String name;
     @Column(name = "price")
-    private String price;
+    private int price;
 }
