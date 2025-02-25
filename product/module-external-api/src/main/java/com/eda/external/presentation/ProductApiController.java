@@ -20,14 +20,14 @@ public class ProductApiController {
     private final GetAllProductsUseCase getAllProductsUseCase;
     private final GetProductUseCase getProductUseCase;
 
-    /** 상품 전체 조회 API */
+    /** 상품 단일 조회 API */
     @GetMapping("/{productId}")
     public ResponseEntity<SuccessResponse<?>> getProduct(@PathVariable final Long productId) {
         final GetProductResDto resDto = GetProductResDto.of(getProductUseCase.getProduct(productId));
         return SuccessResponse.ok(resDto);
     }
 
-    /** 상품 단일 조회 API */
+    /** 상품 전체 조회 API */
     @GetMapping
     public ResponseEntity<SuccessResponse<?>> getProduct() {
         final GetAllProductsResDto resDto = GetAllProductsResDto.of(getAllProductsUseCase.getAllProducts());
