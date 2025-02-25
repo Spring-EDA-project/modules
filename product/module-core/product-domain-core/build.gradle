@@ -1,11 +1,12 @@
 dependencies {
+    implementation project(':module-core:product-rdbms-core')
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 // 빌드시 현재 모듈(multi-module)의 .jar를 생성하지 않습니다.
 bootJar.enabled = false
-jar.enabled = false
+jar.enabled = true
 
 tasks.named('test') {
     useJUnitPlatform()
