@@ -14,9 +14,19 @@ public class Product {
 
     public ProductEntity toEntity() {
         return ProductEntity.builder()
-                .name(name)
-                .price(price)
-                .image(image)
+                .id(this.id)
+                .name(this.name)
+                .price(this.price)
+                .image(this.image)
+                .build();
+    }
+
+    public static Product fromEntity(ProductEntity productEntity) {
+        return Product.builder()
+                .id(productEntity.getId())
+                .name(productEntity.getName())
+                .price(productEntity.getPrice())
+                .image(productEntity.getImage())
                 .build();
     }
 }
