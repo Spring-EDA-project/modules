@@ -1,9 +1,69 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
 bootJar.enabled=false
 jar.enabled=true
 
+
 dependencies {
     // AWS
+    implementation 'org.springframework.boot:spring-boot-starter'
+
     implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.3.0")
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-sqs'
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-sns'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.eda'
+            artifactId = 'messaging'
+            version = '1.0.11'
+
+            pom {
+                name = 'Eda messaging'
+                description = 'Eda messaging module'
+            }
+        }
+    }
+    repositories {
+        maven {
+            url 'https://eda-repository-023013950167.d.codeartifact.ap-northeast-1.amazonaws.com/maven/eda_repository/'
+            credentials {
+                username "aws"
+                password getAwsCodeArtifactToken()
+            }
+        }
+
+    }
+}
+
+
+shadowJar {
+    archiveClassifier.set("all") // 모든 의존성을 포함한 JAR 생성
+    dependencies {
+        include dependency("io.awspring.cloud:spring-cloud-aws-starter-sqs")
+        include dependency("io.awspring.cloud:spring-cloud-aws-starter-sns")
+    }
+}
+
+
+def getAwsCodeArtifactToken() {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'aws', 'codeartifact', 'get-authorization-token',
+                '--domain', 'eda-repository',
+                '--domain-owner', '023013950167',
+                '--region', 'ap-northeast-1',
+                '--query', 'authorizationToken',
+                '--output', 'text'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
 }

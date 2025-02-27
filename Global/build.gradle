@@ -13,6 +13,16 @@ allprojects {
     sourceCompatibility = '17'
 
     repositories {
+        maven {
+            url 'https://eda-repository-023013950167.d.codeartifact.ap-northeast-1.amazonaws.com/maven/eda_repository/'
+            credentials {
+                username "aws"
+                password getAwsCodeArtifactToken()
+            }
+            content {
+                includeGroup "com.eda"  // ✅ 특정 groupId만 CodeArtifact에서 찾도록 설정
+            }
+        }
         mavenCentral()
     }
 }
@@ -34,7 +44,8 @@ subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
         implementation "me.paulschwarz:spring-dotenv:3.0.0"
 
 //        implementation 'org.springframework.boot:spring-boot-starter'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
         // lombok
         compileOnly 'org.projectlombok:lombok'
@@ -44,4 +55,18 @@ subprojects { // 모든 하위 모듈들에 이 설정을 적용합니다.
     tasks.named('test') {
         useJUnitPlatform()
     }
+}
+
+def getAwsCodeArtifactToken() {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'aws', 'codeartifact', 'get-authorization-token',
+                '--domain', 'eda-repository',
+                '--domain-owner', '023013950167',
+                '--region', 'ap-northeast-1',
+                '--query', 'authorizationToken',
+                '--output', 'text'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
 }
