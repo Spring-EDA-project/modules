@@ -1,0 +1,23 @@
+dependencies {
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// 빌드시 현재 모듈(multi-module)의 .jar를 생성하지 않습니다.
+bootJar.enabled = false
+jar.enabled = true
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+ext {
+	set('springCloudVersion', "2024.0.0")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
