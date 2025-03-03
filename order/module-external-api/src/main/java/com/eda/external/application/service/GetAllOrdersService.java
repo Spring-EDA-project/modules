@@ -1,4 +1,4 @@
-package com.eda.external.application;
+package com.eda.external.application.service;
 
 import com.eda.domain.Order;
 import com.eda.external.application.port.in.GetAllOrdersUseCase;
