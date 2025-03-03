@@ -23,7 +23,7 @@ public class OrderApiController {
     /** 주문 요청 API */
     @PostMapping
     public ResponseEntity<SuccessResponse<?>> makeOrder(@RequestBody final MakeOrderReqDto makeOrderReqDto) {
-        makeOrderUseCase.makeOrder();
+        makeOrderUseCase.makeOrder(makeOrderReqDto.toOrder());
         return SuccessResponse.ok(null);
     }
 
