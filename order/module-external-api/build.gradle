@@ -1,6 +1,7 @@
 dependencies {
     implementation project(':module-common')
     implementation project(':module-core:order-domain-core')
+    implementation project(':module-core:order-rdbms-core')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
