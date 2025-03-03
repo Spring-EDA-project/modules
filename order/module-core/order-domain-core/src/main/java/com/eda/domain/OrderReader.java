@@ -4,6 +4,6 @@ import com.eda.rdbms.repository.ports.in.OrderRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OrderWriter {
+public class OrderReader {
     private final OrderRepository orderRepository;
 }
