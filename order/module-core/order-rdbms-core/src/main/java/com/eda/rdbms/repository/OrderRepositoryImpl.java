@@ -14,4 +14,9 @@ public class OrderRepositoryImpl implements OrderRepository {
     public OrderEntity save(OrderEntity orderEntity) {
         return jpaRepository.save(orderEntity);
     }
+
+    public Long findMaxId(Long time) {
+        return jpaRepository.findMaxOrderIdInRange(time * 1000, (time + 1) * 1000)
+                .orElse(time * 1000);
+    }
 }

@@ -1,5 +1,7 @@
 package com.eda.external.application.port.in;
 
+import com.eda.domain.Order;
+
 public interface MakeOrderUseCase {
-        void makeOrder();
+        void makeOrder(Order order);
 }

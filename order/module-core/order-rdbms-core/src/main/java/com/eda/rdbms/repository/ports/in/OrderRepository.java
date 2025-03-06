@@ -5,4 +5,5 @@ import com.eda.rdbms.entity.OrderEntity;
 public interface OrderRepository {
 
     OrderEntity save(OrderEntity orderEntity);
+    Long findMaxId(Long time);
 }
