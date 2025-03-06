@@ -3,29 +3,31 @@ package com.eda.domain;
 import com.eda.rdbms.entity.OrderProductEntity;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Builder
 public class OrderProduct {
     private Long id;
-    private Long orderId;
     private Long productId;
     private int amount;
+    @Setter
+    private Long orderId;
 
     public OrderProductEntity toEntity() {
         return OrderProductEntity.builder()
-                .orderId(orderId)
                 .productId(productId)
                 .amount(amount)
+                .orderId(orderId)
                 .build();
     }
 
     public static OrderProduct fromEntity(OrderProductEntity entity) {
         return OrderProduct.builder()
                 .id(entity.getId())
-                .orderId(entity.getOrderId())
                 .productId(entity.getProductId())
                 .amount(entity.getAmount())
+                .orderId(entity.getOrderId())
                 .build();
     }
 }

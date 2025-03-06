@@ -14,13 +14,10 @@ public class OrderProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_product_id")
     private Long id;
-    @Column(name = "order_id")
-    private Long orderId;
     @Column(name = "product_id")
     private Long productId;
     @Column(name = "amount")
     private int amount;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order", nullable = false)
-    private OrderEntity order;
+    @Column(name = "order_id", nullable = false)
+    private Long orderId;
 }

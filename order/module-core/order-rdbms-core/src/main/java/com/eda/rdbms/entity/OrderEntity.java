@@ -14,14 +14,11 @@ import java.util.List;
 @Entity
 public class OrderEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
-    @Column(name = "uuid")
-    private String uuid;
     @Column(name = "member_id")
     private Long memberId;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL)
     @Builder.Default
     private List<OrderProductEntity> orderProducts = new ArrayList<>();
 }
