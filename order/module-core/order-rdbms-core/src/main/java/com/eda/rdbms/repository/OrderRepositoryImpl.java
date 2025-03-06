@@ -19,4 +19,8 @@ public class OrderRepositoryImpl implements OrderRepository {
         return jpaRepository.findMaxOrderIdInRange(time * 1000, (time + 1) * 1000)
                 .orElse(time * 1000);
     }
+
+    public OrderEntity findById(Long id) {
+        return jpaRepository.findById(id).orElse(null);
+    }
 }

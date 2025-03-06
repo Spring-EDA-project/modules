@@ -22,24 +22,27 @@ public class OrderApiController {
 
     /** 주문 요청 API */
     @PostMapping
-    public ResponseEntity<SuccessResponse<?>> makeOrder(@RequestBody final MakeOrderReqDto makeOrderReqDto) {
-        makeOrderUseCase.makeOrder(makeOrderReqDto.toOrder());
+    public ResponseEntity<SuccessResponse<?>> makeOrder(
+            @RequestHeader final Long memberId,
+            @RequestBody final MakeOrderReqDto makeOrderReqDto
+    ) {
+        makeOrderUseCase.makeOrder(makeOrderReqDto.toOrderProducts(), memberId);
         return SuccessResponse.ok(null);
     }
 
     /** 내 주문 단일 조회 API */
-    @GetMapping("/{userId}/{orderId}")
+    @GetMapping("/me/{orderId}")
     public ResponseEntity<SuccessResponse<?>> getOrder(
             @PathVariable final Long orderId,
-            @PathVariable final Long userId
+            @RequestHeader final Long memberId
     ) {
-        final GetOrderResDto resDto = GetOrderResDto.of(getOrderUseCase.getOrder(userId, orderId));
-        return SuccessResponse.ok(null);
+        final GetOrderResDto resDto = GetOrderResDto.of(getOrderUseCase.getOrder(memberId, orderId));
+        return SuccessResponse.ok(resDto);
     }
 
     /** 내 주문 전체 조회 API */
-    @GetMapping("/{userId}")
-    public ResponseEntity<SuccessResponse<?>> getAllOrders(@PathVariable final Long userId) {
+    @GetMapping
+    public ResponseEntity<SuccessResponse<?>> getAllOrders(@RequestHeader final Long memberId) {
         final GetAllOrdersResDto resDto = GetAllOrdersResDto.of(getAllOrdersUseCase.getAllOrders(0L));
         return SuccessResponse.ok(null);
     }

@@ -6,4 +6,5 @@ public interface OrderRepository {
 
     OrderEntity save(OrderEntity orderEntity);
     Long findMaxId(Long time);
+    OrderEntity findById(Long id);
 }

@@ -1,6 +1,7 @@
 package com.eda.external.config;
 
 import com.eda.domain.OrderReader;
+import com.eda.domain.OrderValidator;
 import com.eda.domain.OrderWriter;
 import com.eda.rdbms.repository.OrderRepositoryImpl;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,10 @@ public class OrderConfig {
     @Bean
     public OrderReader orderReader() {
         return new OrderReader(orderRepositoryImpl);
+    }
+
+    @Bean
+    public OrderValidator orderValidator() {
+        return new OrderValidator();
     }
 }
