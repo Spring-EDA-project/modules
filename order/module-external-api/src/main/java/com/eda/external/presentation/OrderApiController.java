@@ -43,7 +43,7 @@ public class OrderApiController {
     /** 내 주문 전체 조회 API */
     @GetMapping
     public ResponseEntity<SuccessResponse<?>> getAllOrders(@RequestHeader final Long memberId) {
-        final GetAllOrdersResDto resDto = GetAllOrdersResDto.of(getAllOrdersUseCase.getAllOrders(0L));
-        return SuccessResponse.ok(null);
+        final GetAllOrdersResDto resDto = GetAllOrdersResDto.of(getAllOrdersUseCase.getAllOrders(memberId));
+        return SuccessResponse.ok(resDto);
     }
 }

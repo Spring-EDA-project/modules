@@ -6,6 +6,8 @@ import com.eda.rdbms.repository.ports.out.OrderJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class OrderRepositoryImpl implements OrderRepository {
@@ -22,5 +24,10 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     public OrderEntity findById(Long id) {
         return jpaRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<OrderEntity> findByMemberId(Long memberId) {
+        return jpaRepository.findByMemberId(memberId);
     }
 }
