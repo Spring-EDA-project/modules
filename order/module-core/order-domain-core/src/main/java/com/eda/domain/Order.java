@@ -1,16 +1,15 @@
 package com.eda.domain;
 
 import com.eda.rdbms.entity.OrderEntity;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
 @Getter
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 public class Order {
-    @Setter
     private Long id;
     private Long memberId;
     private List<OrderProduct> orderProducts;
@@ -28,6 +27,14 @@ public class Order {
                 .id(orderEntity.getId())
                 .memberId(orderEntity.getMemberId())
                 .orderProducts(orderEntity.getOrderProducts().stream().map(OrderProduct::fromEntity).toList())
+                .build();
+    }
+
+    public static Order create(Long id, Long memberId, List<OrderProduct> orderProducts) {
+        return Order.builder()
+                .id(id)
+                .memberId(memberId)
+                .orderProducts(orderProducts)
                 .build();
     }
 }
