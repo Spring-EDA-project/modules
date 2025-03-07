@@ -24,7 +24,7 @@ publishing {
 
             groupId = 'com.eda'
             artifactId = 'messaging'
-            version = '1.0.11'
+            version = '1.0.21'
 
             pom {
                 name = 'Eda messaging'
