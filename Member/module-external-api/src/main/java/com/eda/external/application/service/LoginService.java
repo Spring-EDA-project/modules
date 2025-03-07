@@ -1,4 +1,4 @@
-package com.eda.external.application.port;
+package com.eda.external.application.service;
 
 import com.eda.domain.Member;
 import com.eda.domain.MemberReader;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService implements LoginUseCase {
     private final MemberReader memberReader;
-    private final MemberValidator memberValidator;
     @Override
     public Member login(Member member) {
         Member foundMember = memberReader.readByEmail(member.getEmail());

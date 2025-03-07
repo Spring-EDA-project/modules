@@ -1,5 +1,7 @@
 package com.eda.rdbms.repository;
 
+import com.eda.global.common.error.GlobalExceptionHandler;
+import com.eda.global.common.error.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import com.eda.rdbms.entity.MemberEntity;
 import com.eda.rdbms.repository.ports.in.MemberRepository;
@@ -17,6 +19,12 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public MemberEntity findByEmail(String email) {
-        return memberJpaRepository.findByEmail(email).orElse(null);
+        GlobalExceptionHandler
+        return memberJpaRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Override
+    public MemberEntity findById(Long id) {
+        return memberJpaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

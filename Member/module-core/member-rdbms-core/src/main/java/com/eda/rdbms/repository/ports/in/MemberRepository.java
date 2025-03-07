@@ -5,5 +5,6 @@ import com.eda.rdbms.entity.MemberEntity;
 public interface MemberRepository {
     MemberEntity save(MemberEntity memberEntity);
     MemberEntity findByEmail(String email);
+    MemberEntity findById(Long id);
 }
 

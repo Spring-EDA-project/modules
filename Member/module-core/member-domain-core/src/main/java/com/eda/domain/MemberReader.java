@@ -1,5 +1,7 @@
 package com.eda.domain;
 
+import com.eda.global.common.error.exception.EntityNotFoundException;
+import com.eda.global.common.error.exception.UnauthorizedException;
 import com.eda.rdbms.entity.MemberEntity;
 import com.eda.rdbms.repository.ports.in.MemberRepository;
 
@@ -14,9 +16,11 @@ public class MemberReader {
 
     public Member readByEmail(String email) {
         MemberEntity memberEntity = memberRepository.findByEmail(email);
-//        if(memberEntity == null) {
-//            //TODO : null pointer exception handling
-//        }
+        return memberMapper.toDomain(memberEntity);
+    }
+
+    public Member readById(Long id) {
+        MemberEntity memberEntity = memberRepository.findById(id);
         return memberMapper.toDomain(memberEntity);
     }
 }

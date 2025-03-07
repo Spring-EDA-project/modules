@@ -1,4 +1,4 @@
-package com.eda.external.application;
+package com.eda.external.application.service;
 
 import lombok.RequiredArgsConstructor;
 import com.eda.domain.Member;
