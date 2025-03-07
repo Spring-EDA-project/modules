@@ -8,12 +8,36 @@ plugins {
 bootJar.enabled = false
 jar.enabled = false
 
+def getAwsCodeArtifactToken() {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'aws', 'codeartifact', 'get-authorization-token',
+                '--domain', 'eda-repository',
+                '--domain-owner', '023013950167',
+                '--region', 'ap-northeast-1',
+                '--query', 'authorizationToken',
+                '--output', 'text'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
 allprojects {
     group = 'com.eda'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '17'
 
     repositories {
+        maven {
+            url 'https://eda-repository-023013950167.d.codeartifact.ap-northeast-1.amazonaws.com/maven/eda_repository/'
+            credentials {
+                username "aws"
+                password getAwsCodeArtifactToken()
+            }
+            content {
+                includeGroup "com.eda"
+            }
+        }
         mavenCentral()
     }
 }

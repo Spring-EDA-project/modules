@@ -1,7 +1,7 @@
 package com.eda.external.presentation;
 
+import com.eda.global.common.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
-import com.eda.common.response.SuccessResponse;
 import com.eda.external.application.port.in.GetAllOrdersUseCase;
 import com.eda.external.application.port.in.GetOrderUseCase;
 import com.eda.external.application.port.in.MakeOrderUseCase;
@@ -22,28 +22,28 @@ public class OrderApiController {
 
     /** 주문 요청 API */
     @PostMapping
-    public ResponseEntity<SuccessResponse<?>> makeOrder(
+    public ResponseEntity<BaseResponse<?>> makeOrder(
             @RequestHeader final Long memberId,
             @RequestBody final MakeOrderReqDto makeOrderReqDto
     ) {
         makeOrderUseCase.makeOrder(makeOrderReqDto.toOrderProducts(), memberId);
-        return SuccessResponse.ok(null);
+        return BaseResponse.ok(null);
     }
 
     /** 내 주문 단일 조회 API */
     @GetMapping("/me/{orderId}")
-    public ResponseEntity<SuccessResponse<?>> getOrder(
+    public ResponseEntity<BaseResponse<?>> getOrder(
             @PathVariable final Long orderId,
             @RequestHeader final Long memberId
     ) {
         final GetOrderResDto resDto = GetOrderResDto.of(getOrderUseCase.getOrder(memberId, orderId));
-        return SuccessResponse.ok(resDto);
+        return BaseResponse.ok(resDto);
     }
 
     /** 내 주문 전체 조회 API */
     @GetMapping
-    public ResponseEntity<SuccessResponse<?>> getAllOrders(@RequestHeader final Long memberId) {
+    public ResponseEntity<BaseResponse<?>> getAllOrders(@RequestHeader final Long memberId) {
         final GetAllOrdersResDto resDto = GetAllOrdersResDto.of(getAllOrdersUseCase.getAllOrders(memberId));
-        return SuccessResponse.ok(resDto);
+        return BaseResponse.ok(resDto);
     }
 }
