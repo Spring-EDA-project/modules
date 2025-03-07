@@ -19,7 +19,6 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public MemberEntity findByEmail(String email) {
-        GlobalExceptionHandler
         return memberJpaRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
     }
 
