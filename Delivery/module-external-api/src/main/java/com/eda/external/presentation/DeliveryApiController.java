@@ -3,13 +3,10 @@ package com.eda.external.presentation;
 import com.eda.domain.Delivery;
 import com.eda.external.application.port.in.GetDeliveryUseCase;
 import com.eda.external.application.port.in.UpdateDeliveryUseCase;
-import com.eda.external.application.port.in.RequestDeliveryUseCase;
 import com.eda.external.presentation.dto.req.DeliveryUpdateReqDto;
-import com.eda.external.presentation.dto.req.RequestDeliveryReqDto;
 import com.eda.external.presentation.dto.res.DeliveryListResDto;
 import com.eda.external.presentation.dto.res.DeliveryResDto;
 import com.eda.external.presentation.dto.res.DeliveryUpdateResDto;
-import com.eda.external.presentation.dto.res.RequestDeliveryResDto;
 import com.eda.global.common.response.BaseResponse;
 import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
@@ -17,26 +14,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/delivery")
 @RestController
 public class DeliveryApiController {
-    private final RequestDeliveryUseCase requestDeliveryUseCase;
     private final UpdateDeliveryUseCase updateDeliveryUseCase;
     private final GetDeliveryUseCase getDeliveryUseCase;
-
-    @PostMapping("/")
-    public ResponseEntity<BaseResponse<?>> requestDelivery(@RequestBody final RequestDeliveryReqDto requestDeliveryReqDto) {
-//        final RequestDeliveryResDto resDto = RequestDeliveryResDto.of(requestDeliveryUseCase.requestDelivery(requestDeliveryReqDto.toDelivery()));
-        final RequestDeliveryResDto resDto = RequestDeliveryResDto.of(requestDeliveryReqDto.toDelivery());
-        return BaseResponse.ok(resDto);
-    }
 
     @PatchMapping("/{deliveryId}")
     public ResponseEntity<BaseResponse<?>> updateDelivery(@PathVariable(name = "deliveryId") final Long deliveryId,  @RequestBody final DeliveryUpdateReqDto deliveryUpdateReqDto) {
