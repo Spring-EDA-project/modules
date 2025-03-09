@@ -6,5 +6,6 @@ import java.util.List;
 public interface DeliveryRepository {
     DeliveryEntity save(DeliveryEntity deliveryEntity);
     DeliveryEntity getDelivery(Long id);
+    List<DeliveryEntity> getAllDelivery(Long memberId);
 }
 

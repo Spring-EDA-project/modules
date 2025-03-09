@@ -1,6 +1,7 @@
 package com.eda.external.presentation;
 
 import com.eda.domain.Delivery;
+import com.eda.external.application.port.in.GetAllDeliveryUseCase;
 import com.eda.external.application.port.in.GetDeliveryUseCase;
 import com.eda.external.application.port.in.UpdateDeliveryUseCase;
 import com.eda.external.presentation.dto.req.DeliveryUpdateReqDto;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeliveryApiController {
     private final UpdateDeliveryUseCase updateDeliveryUseCase;
     private final GetDeliveryUseCase getDeliveryUseCase;
+    private final GetAllDeliveryUseCase getAllDeliveryUseCase;
 
     @PatchMapping("/{deliveryId}")
     public ResponseEntity<BaseResponse<?>> updateDelivery(@PathVariable(name = "deliveryId") final Long deliveryId,  @RequestBody final DeliveryUpdateReqDto deliveryUpdateReqDto) {
@@ -40,9 +42,7 @@ public class DeliveryApiController {
 
     @GetMapping("/list/{memberId}")
     public ResponseEntity<BaseResponse<?>> getAllDeliveries(@PathVariable(name = "memberId") final Long memberId) {
-//        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
-        final DeliveryListResDto resDto = DeliveryListResDto.of(Arrays.asList(Delivery.builder()
-            .memberId(memberId).build()));
+        final DeliveryListResDto resDto = DeliveryListResDto.of(getAllDeliveryUseCase.getAllDelivery(memberId));
         return BaseResponse.ok(resDto);
     }
 

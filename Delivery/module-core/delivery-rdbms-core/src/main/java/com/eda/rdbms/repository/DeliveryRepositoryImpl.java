@@ -20,4 +20,9 @@ public class DeliveryRepositoryImpl implements DeliveryRepository {
     public DeliveryEntity getDelivery(Long id) {
         return deliveryJpaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
+
+    @Override
+    public List<DeliveryEntity> getAllDelivery(Long memberId) {
+        return deliveryJpaRepository.findAllByMemberId(memberId);
+    }
 }
