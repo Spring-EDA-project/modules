@@ -1,5 +1,7 @@
 package com.eda.rdbms.repository;
 
+import com.eda.global.common.error.exception.EntityNotFoundException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import com.eda.rdbms.entity.DeliveryEntity;
 import com.eda.rdbms.repository.ports.in.DeliveryRepository;
@@ -13,5 +15,9 @@ public class DeliveryRepositoryImpl implements DeliveryRepository {
 
     public DeliveryEntity save(DeliveryEntity deliveryEntity) {
         return deliveryJpaRepository.save(deliveryEntity);
+    }
+    @Override
+    public DeliveryEntity getDelivery(Long id) {
+        return deliveryJpaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

@@ -1,6 +1,7 @@
 package com.eda.external.config;
 
 import com.eda.domain.DeliveryMapper;
+import com.eda.domain.DeliveryReader;
 import com.eda.domain.DeliveryWriter;
 import com.eda.rdbms.repository.DeliveryRepositoryImpl;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,11 @@ public class DeliveryConfig {
     public DeliveryWriter deliveryWriter() {
         DeliveryMapper deliveryMapper = new DeliveryMapper();
         return new DeliveryWriter(deliveryRepositoryImpl, deliveryMapper);
+    }
+
+    @Bean
+    public DeliveryReader deliveryReader() {
+        return new DeliveryReader(deliveryRepositoryImpl);
     }
 
 

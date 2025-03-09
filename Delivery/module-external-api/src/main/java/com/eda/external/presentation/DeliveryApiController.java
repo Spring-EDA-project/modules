@@ -1,8 +1,9 @@
 package com.eda.external.presentation;
 
 import com.eda.domain.Delivery;
-import com.eda.external.application.in.UpdateDeliveryUseCase;
-import com.eda.external.application.in.RequestDeliveryUseCase;
+import com.eda.external.application.port.in.GetDeliveryUseCase;
+import com.eda.external.application.port.in.UpdateDeliveryUseCase;
+import com.eda.external.application.port.in.RequestDeliveryUseCase;
 import com.eda.external.presentation.dto.req.DeliveryUpdateReqDto;
 import com.eda.external.presentation.dto.req.RequestDeliveryReqDto;
 import com.eda.external.presentation.dto.res.DeliveryListResDto;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeliveryApiController {
     private final RequestDeliveryUseCase requestDeliveryUseCase;
     private final UpdateDeliveryUseCase updateDeliveryUseCase;
+    private final GetDeliveryUseCase getDeliveryUseCase;
 
     @PostMapping("/")
     public ResponseEntity<BaseResponse<?>> requestDelivery(@RequestBody final RequestDeliveryReqDto requestDeliveryReqDto) {
@@ -36,22 +39,20 @@ public class DeliveryApiController {
     }
 
     @PatchMapping("/{deliveryId}")
-    public ResponseEntity<BaseResponse<?>> updateDelivery(@RequestParam(name = "deliveryId") final Long deliveryId,  @RequestBody final DeliveryUpdateReqDto deliveryUpdateReqDto) {
+    public ResponseEntity<BaseResponse<?>> updateDelivery(@PathVariable(name = "deliveryId") final Long deliveryId,  @RequestBody final DeliveryUpdateReqDto deliveryUpdateReqDto) {
 //        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
         final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateReqDto.toDelivery());
         return BaseResponse.ok(resDto);
     }
 
     @GetMapping("/{deliveryId}")
-    public ResponseEntity<BaseResponse<?>> getDelivery(@RequestParam(name = "deliveryId") final Long deliveryId) {
-//        final DeliveryResDto resDto = DeliveryResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
-        final DeliveryResDto resDto = DeliveryResDto.of(Delivery.builder()
-            .id(deliveryId).build());
+    public ResponseEntity<BaseResponse<?>> getDelivery(@PathVariable(name = "deliveryId") final Long deliveryId) {
+        final DeliveryResDto resDto = DeliveryResDto.of(getDeliveryUseCase.getDelivery(deliveryId));
         return BaseResponse.ok(resDto);
     }
 
     @GetMapping("/list/{memberId}")
-    public ResponseEntity<BaseResponse<?>> getAllDeliveries(@RequestParam(name = "memberId") final Long memberId) {
+    public ResponseEntity<BaseResponse<?>> getAllDeliveries(@PathVariable(name = "memberId") final Long memberId) {
 //        final DeliveryUpdateResDto resDto = DeliveryUpdateResDto.of(deliveryUpdateUseCase.updateDelivery(deliveryUpdateReqDto.toDelivery()));
         final DeliveryListResDto resDto = DeliveryListResDto.of(Arrays.asList(Delivery.builder()
             .memberId(memberId).build()));

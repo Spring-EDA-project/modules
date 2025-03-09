@@ -4,7 +4,7 @@ import com.eda.rdbms.entity.DeliveryEntity;
 
 public class DeliveryMapper {
 
-    public DeliveryEntity toEntity(Delivery delivery) {
+    public static DeliveryEntity toEntity(Delivery delivery) {
         return DeliveryEntity.builder()
             .id(delivery.getId())
             .destination(delivery.getDestination())
@@ -16,7 +16,7 @@ public class DeliveryMapper {
             .build();
     }
 
-    public Delivery toDomain(DeliveryEntity entity) {
+    public static Delivery toDomain(DeliveryEntity entity) {
         return Delivery.builder()
             .id(entity.getId())
             .destination(entity.getDestination())

@@ -1,4 +1,4 @@
-package com.eda.external.application.in;
+package com.eda.external.application.port.in;
 
 import com.eda.domain.Delivery;
 
