@@ -2,4 +2,9 @@ bootJar.enabled=false
 jar.enabled=true
 
 dependencies {
+    implementation project(':module-common')
+    implementation project(':module-core:member-rdbms-core')
+    implementation project(':module-core:member-domain-core')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
 }
