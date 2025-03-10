@@ -1,6 +1,8 @@
 package com.eda.messaging.service;
 
 import com.eda.messaging.config.MessageProcessor;
+//import com.eda.messaging.config.SqsUrls;
+import com.eda.messaging.config.QueueProperties;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,10 +20,12 @@ import java.util.concurrent.CompletableFuture;
 public class SqsListener {
     private final SqsAsyncClient sqsAsyncClient;
     private final MessageProcessor messageProcessor;
+    private final QueueProperties queueProperties;
 
-    public SqsListener(SqsAsyncClient sqsAsyncClient, List<Object> handlers) {
+    public SqsListener(SqsAsyncClient sqsAsyncClient, List<Object> handlers, QueueProperties queueProperties) {
         this.sqsAsyncClient = sqsAsyncClient;
         this.messageProcessor = new MessageProcessor(handlers);
+        this.queueProperties = queueProperties;
     }
 
     @PostConstruct
@@ -35,7 +39,8 @@ public class SqsListener {
         messageProcessor.getAllQueueUrls().forEach(this::pollMessages);
     }
 
-    public void pollMessages(String queueUrl) {
+    public void pollMessages(String queueName) {
+        String queueUrl = queueProperties.getQueueUrl(queueName);
         ReceiveMessageRequest request = ReceiveMessageRequest.builder()
                 .queueUrl(queueUrl)
                 .maxNumberOfMessages(10)
@@ -47,7 +52,7 @@ public class SqsListener {
         futureResponse.thenAccept(response -> {
             response.messages().forEach(message -> {
                 try {
-                    messageProcessor.process(message.body(), queueUrl);
+                    messageProcessor.process(message.body(), queueName);
                 } catch (Exception e) {
                     log.error("Error processing message", e);
                 }
