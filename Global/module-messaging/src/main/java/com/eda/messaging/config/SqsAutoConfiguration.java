@@ -1,5 +1,6 @@
 package com.eda.messaging.config;
 
+import com.eda.messaging.service.SqsListener;
 import io.awspring.cloud.sqs.config.SqsMessageListenerContainerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -12,7 +13,7 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
 @Configuration
-@ConditionalOnClass
+@ConditionalOnClass(SqsListener.class)
 @EnableConfigurationProperties(AwsProperties.class)
 public class SqsAutoConfiguration {
 
@@ -45,5 +46,11 @@ public class SqsAutoConfiguration {
                 .builder()
                 .sqsAsyncClient(sqsAsyncClient())
                 .build();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public QueueProperties queueProperties() {
+        return new QueueProperties(awsProperties.getSqsUrls());
     }
 }
