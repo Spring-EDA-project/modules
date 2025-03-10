@@ -13,8 +13,13 @@ public class DeliveryReader {
     public Delivery getDelivery(Long id) {
         return DeliveryMapper.toDomain(deliveryRepository.getDelivery(id));
     }
-    public List<Delivery> getAllDelivery(Long memberId) {
-        return deliveryRepository.getAllDelivery(memberId).stream()
+    public List<Delivery> getAllDeliveryByMember(Long memberId) {
+        return deliveryRepository.getAllDeliveryByMember(memberId).stream()
+            .map(DeliveryMapper::toDomain)
+            .collect(Collectors.toList());
+    }
+    public List<Delivery> getAllDelivery() {
+        return deliveryRepository.getAllDelivery().stream()
             .map(DeliveryMapper::toDomain)
             .collect(Collectors.toList());
     }

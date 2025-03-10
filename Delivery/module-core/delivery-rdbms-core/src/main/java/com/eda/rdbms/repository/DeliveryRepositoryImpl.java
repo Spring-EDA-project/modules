@@ -22,7 +22,12 @@ public class DeliveryRepositoryImpl implements DeliveryRepository {
     }
 
     @Override
-    public List<DeliveryEntity> getAllDelivery(Long memberId) {
+    public List<DeliveryEntity> getAllDeliveryByMember(Long memberId) {
         return deliveryJpaRepository.findAllByMemberId(memberId);
+    }
+
+    @Override
+    public List<DeliveryEntity> getAllDelivery() {
+        return deliveryJpaRepository.findAll();
     }
 }

@@ -1,8 +1,8 @@
-package com.eda.external.application.service;
+package com.eda.internal.application.service;
 
 import com.eda.domain.Delivery;
 import com.eda.domain.DeliveryReader;
-import com.eda.external.application.port.in.GetAllDeliveryUseCase;
+import com.eda.internal.application.port.in.GetAllDeliveryUseCase;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GetAllDeliveryService implements GetAllDeliveryUseCase {
     private final DeliveryReader deliveryReader;
+
     @Override
-    public List<Delivery> getAllDelivery(Long memberId) {
-        return deliveryReader.getAllDeliveryByMember(memberId);
+    public List<Delivery> getAllDelivery() {
+        return deliveryReader.getAllDelivery();
     }
 }
