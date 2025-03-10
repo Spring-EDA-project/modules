@@ -14,28 +14,27 @@ public class MessageProcessor {
             for (Method method : handler.getClass().getDeclaredMethods()) {
                 if (method.isAnnotationPresent(MessageHandler.class)) {
                     MessageHandler annotation = method.getAnnotation(MessageHandler.class);
-                    String queueUrl = annotation.queueUrl();
+                    String name = annotation.name();
 
-                    handlerMap.computeIfAbsent(queueUrl, k -> new ArrayList<>())
+                    handlerMap.computeIfAbsent(name, k -> new ArrayList<>())
                             .add(new HandlerMethod(handler, method));
 
-                    log.info("Registered handler: queueUrl={}, method={}", queueUrl, method.getName());
+                    log.info("✅ Registered handler: queue name={}, method={}", name, method.getName());
                 }
             }
         }
     }
 
-    public void process(String messageBody, String currentQueueUrl) {
+    public void process(String messageBody, String queueName) {
         try {
-            List<HandlerMethod> handlers = handlerMap.get(currentQueueUrl);
+            List<HandlerMethod> handlers = handlerMap.get(queueName);
 
             if (handlers != null) {
                 for (HandlerMethod handlerMethod : handlers) {
-                    log.info("Executing handler on queueUrl={}", currentQueueUrl);
                     handlerMethod.method.invoke(handlerMethod.instance, messageBody);
                 }
             } else {
-                log.warn("No handlers for queueUrl: {}", currentQueueUrl);
+                log.warn("No handlers for queue: {}", queueName);
             }
         } catch (Exception e) {
             log.error("Failed to process message", e);
